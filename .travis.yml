@@ -34,5 +34,5 @@ install: true
 script: npm test
 
 after_success:
- - COMMIT_MESSAGE=$(git log --format=%B --no-merges -n 1 | tr -d '\n')
- - if [[ ${COMMIT_MESSAGE} =~ "publish binary]" ]]; then echo "Publishing"; npm install node-pre-gyp-github; ./node_modules/.bin/node-pre-gyp configure; ./node_modules/.bin/node-pre-gyp build; ./node_modules/.bin/node-pre-gyp package; ./node_modules/.bin/node-pre-gyp-github publish --release; fi;
+ - REGEX='^v(0|[1-9]+)\.(0|[1-9]+)\.(0|[1-9]+)$'
+ - if [[ $TRAVIS_TAG =~ $REGEX ]]; then echo "Publishing"; npm install node-pre-gyp-github; ./node_modules/.bin/node-pre-gyp configure; ./node_modules/.bin/node-pre-gyp build; ./node_modules/.bin/node-pre-gyp package; ./node_modules/.bin/node-pre-gyp-github publish --release; fi;
