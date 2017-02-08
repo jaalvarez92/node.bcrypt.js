@@ -11,7 +11,7 @@
     "crypto"
   ],
   "main": "./bcrypt",
-  "version": "1.0.2",
+  "version": "99.99.99",
   "author": "Nick Campbell (https://github.com/ncb000gt)",
   "engines": {
     "node": ">= 0.6.0"
